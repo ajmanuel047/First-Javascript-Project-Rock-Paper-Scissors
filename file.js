@@ -36,3 +36,18 @@
                 return 'You Win!'
             }              
             }  
+             
+             
+            function game() {
+                for (let i = 0; i < 5; i++) {
+                    if (outPut === 'You Win!') {
+                      playerScore += 1;                                                          
+                   } else if (outPut === 'Draw') {
+                      drawScore += 1;
+                   } else {
+                      computerScore++;
+                   }
+                }                                                                                 
+             } 
+
+  
