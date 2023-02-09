@@ -17,9 +17,8 @@ if(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection 
 
 
 function playRound(playerSelection, computerSelection){
-
     
-    playerSelection = playerSelection.toLowerCase()
+  
     computerSelection = computerSelection.toLowerCase()
     
     if(playerSelection === computerSelection){
@@ -44,7 +43,7 @@ function playRound(playerSelection, computerSelection){
     computerSelection = getComputerChoice()
 
     let outPut = playRound(playerSelection, computerSelection)
-    alert(outPut)
+ 
      
     let playerScore = 0;
     let computerScore = 0;    
@@ -52,7 +51,7 @@ function playRound(playerSelection, computerSelection){
 
     function game() {
         for (let i = 0; i < 5; i++) {
-            playerSelection = 'Rock';
+            
             computerSelection = getComputerChoice();
             outPut = playRound(playerSelection, computerSelection);
             alert(outPut)
