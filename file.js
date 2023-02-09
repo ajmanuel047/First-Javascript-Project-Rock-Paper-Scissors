@@ -16,11 +16,9 @@ if(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection 
 }
 
 
+
 function playRound(playerSelection, computerSelection){
-    
-  
     computerSelection = computerSelection.toLowerCase()
-    
     if(playerSelection === computerSelection){
         return `Draw`
     }
@@ -38,13 +36,7 @@ function playRound(playerSelection, computerSelection){
         return 'You Win!'
     }              
     }  
-     
-    
-    computerSelection = getComputerChoice()
-
-    let outPut = playRound(playerSelection, computerSelection)
- 
-     
+        
     let playerScore = 0;
     let computerScore = 0;    
     let drawScore = 0 
@@ -53,11 +45,11 @@ function playRound(playerSelection, computerSelection){
         for (let i = 0; i < 5; i++) {
             
             computerSelection = getComputerChoice();
-            outPut = playRound(playerSelection, computerSelection);
-            alert(outPut)
-           if (outPut === 'You Win!') {
+            let result = playRound(playerSelection, computerSelection);
+            alert(result)
+           if (result === 'You Win!') {
               playerScore += 1;                                                          
-           } else if (outPut === 'Draw') {
+           } else if (result === 'Draw') {
               drawScore += 1;
            } else {
               computerScore++;
@@ -65,7 +57,7 @@ function playRound(playerSelection, computerSelection){
         }                                                                                 
      }  
 
-     game()
+     game();
 
      alert(`PlayerScore: ${playerScore}\nComputerScore: ${computerScore}\nDraw: ${drawScore}`)
      if(playerScore > computerScore){
