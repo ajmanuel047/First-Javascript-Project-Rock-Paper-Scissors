@@ -1,6 +1,7 @@
 # First-Javascript-Project-Rock-Paper-Scissors
-This is my very first JavaScript Project. With the lessons from Odin Projects I would like to see how I perform here. Am really excited
-After having been done with this project I have to say that it was fun but probably took longer than I expected
+This is my very first JavaScript Project. With the lessons from Odin Projects I would like to see how I perform here. Am really excited.
+
+After finishing this project I have to say that it was fun but probably took longer than I expected
 
 # Some of the challenges I faced
 The project wasn't difficult but the part that was a challenge was creating the game function and making it to work
