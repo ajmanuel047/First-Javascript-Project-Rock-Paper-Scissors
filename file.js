@@ -18,8 +18,8 @@ if(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection 
 
 function playRound(playerSelection, computerSelection){
 
-    playerSelection = playerSelection.toLowerCase()
     
+    playerSelection = playerSelection.toLowerCase()
     computerSelection = computerSelection.toLowerCase()
     
     if(playerSelection === computerSelection){
@@ -40,10 +40,23 @@ function playRound(playerSelection, computerSelection){
     }              
     }  
      
+    
+    computerSelection = getComputerChoice()
+
+    let outPut = playRound(playerSelection, computerSelection)
+    alert(outPut)
      
+    let playerScore = 0;
+    let computerScore = 0;    
+    let drawScore = 0 
+
     function game() {
         for (let i = 0; i < 5; i++) {
-            if (outPut === 'You Win!') {
+            playerSelection = 'Rock';
+            computerSelection = getComputerChoice();
+            outPut = playRound(playerSelection, computerSelection);
+            alert(outPut)
+           if (outPut === 'You Win!') {
               playerScore += 1;                                                          
            } else if (outPut === 'Draw') {
               drawScore += 1;
@@ -51,9 +64,20 @@ function playRound(playerSelection, computerSelection){
               computerScore++;
            }
         }                                                                                 
-     } 
+     }  
 
-
+     game()
+     console.log(playerScore);
+     console.log(computerScore);
+     console.log(drawScore);
+     alert(`PlayerScore: ${playerScore}\nComputerScore: ${computerScore}\nDraw: ${drawScore}`)
+     if(playerScore > computerScore){
+         alert(`Congratulations! You Win\n\nPlease Refresh Page To Have Another Go`)
+     }else if (computerScore > playerScore){
+         alert(`Better Luck Next Time\n\nPlease Refresh Page To Have Another Go`)
+     }else{
+         alert(`This Round Was A Tie\n\nPlease Refresh Page To Have Another Go`)
+     }
 
 } else {
     alert('Please Input Rock, Paper or Scissors')
