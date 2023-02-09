@@ -1,4 +1,6 @@
-     function getComputerChoice(){
+let playerSelection = prompt('Rock, Paper or Scissors')
+playerSelection = playerSelection.toLowerCase()
+function getComputerChoice(){
             let random = Math.floor(Math.random() * 3)
              if(random === 0){
                  console.log('Rock')
