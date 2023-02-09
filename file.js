@@ -67,9 +67,7 @@ function playRound(playerSelection, computerSelection){
      }  
 
      game()
-     console.log(playerScore);
-     console.log(computerScore);
-     console.log(drawScore);
+
      alert(`PlayerScore: ${playerScore}\nComputerScore: ${computerScore}\nDraw: ${drawScore}`)
      if(playerScore > computerScore){
          alert(`Congratulations! You Win\n\nPlease Refresh Page To Have Another Go`)
