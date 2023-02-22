@@ -1,77 +1,196 @@
-let playerSelection = prompt('Rock, Paper or Scissors')
-playerSelection = playerSelection.toLowerCase()
-if(playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
-  function getComputerChoice(){
+/*
+ some things to add
+ 1. the rules
+ 2. put semi-colons
+ 3. whenever a particular score increase can
+    you light it up?
+*/
+const container = document.querySelector('.container');
+let scores = document.querySelector('.scores')
+let playerSelection_Rock = document.querySelector('.Rock');
+let playerSelection_Paper = document.querySelector('.Paper');
+let playerSelection_Scissors = document.querySelector('.Scissors');
+let para = document.querySelector('.para');
+let result = document.querySelector('.result');
+let playerSelection = undefined;
+let draw = 'Result : Draw';
+let win = 'Result : You Win!';
+let playerScore = document.querySelector('.playerScore');
+let opponent_score = document.querySelector('.opponent_score');
+let drawScore = document.querySelector('.drawScore');
+let playerCount = 0;
+let opponentCount = 0;
+let drawCount = 0;
+
+scores.appendChild(drawScore)
+scores.appendChild(opponent_score)
+scores.appendChild(playerScore)
+
+
+
+function getComputerChoice(){
     let random = Math.floor(Math.random() * 3)
      if(random === 0){
-         console.log('Rock')
-        return 'Rock'
+         
+        return 'Rock';
     }  else if(random === 1){
-         console.log('Paper')
-        return 'Paper'
+         
+        return 'Paper';
     }  else if(random === 2){
-        console.log('Scissors')
-        return 'Scissors'               
-    } 
-}
-
-
-
-function playRound(playerSelection, computerSelection){
-    computerSelection = computerSelection.toLowerCase()
-    if(playerSelection === computerSelection){
-        return `Draw`
-    }
-    else if(playerSelection === 'rock' && computerSelection === 'paper'){
-        return 'You Lose! Paper beats Rock'
-    } else if(playerSelection === 'paper' && computerSelection === 'scissors'){
-        return 'You Lose! Scissors beats Paper'
-    } else if(playerSelection === 'scissors' && computerSelection === 'rock'){
-        return 'You Lose! Rock beats Scissors'
-    } else if(playerSelection === 'rock' && computerSelection === 'scissors'){
-        return 'You Win!'
-    } else if(playerSelection === 'paper' && computerSelection === 'rock'){
-        return 'You Win!'
-    } else if(playerSelection === 'scissors' && computerSelection === 'paper'){
-        return 'You Win!'
-    }              
-    }  
         
-    let playerScore = 0;
-    let computerScore = 0;    
-    let drawScore = 0 
+        return 'Scissors';               
+    }  
+    
+  }  
 
-    function game() {
-        for (let i = 0; i < 5; i++) {
+
+const div = document.createElement('div');
+ 
+playerSelection_Rock.addEventListener('click', () => {  
+    playerSelection = 'Rock';
+
+    let computerChoice = getComputerChoice();
+    console.log(computerChoice)
+    console.log(playerSelection)
+    if(playerSelection == computerChoice){        
+        para.textContent = `Opponent's Selection : ${computerChoice}`;
+        result.textContent = `${draw}`;
+        container.appendChild(para);
+        container.appendChild(result);  
+        drawCount++
+        drawScore.textContent = drawCount
+        drawScore.textContent = `Draw Score : ${drawCount}`
+        drawScore.classList.add('effects')
+
+        setTimeout(function(){
+            drawScore.classList.remove('effects')
+        }, 100)
+    
+    }   else if (playerSelection !== computerChoice && computerChoice == 'Scissors'){
+                result.textContent = `${win}`;
+                para.textContent = `Opponent's Selection : ${computerChoice}`;
+                container.appendChild(para);
+                container.appendChild(result);
+                playerCount++
+                playerScore.textContent = playerCount
+                playerScore.textContent = `Player Score : ${playerCount}`;
+                playerScore.classList.add('effects')
+
+                setTimeout(function(){
+                    playerScore.classList.remove('effects')
+                }, 100)
+                                    
+            } else if(playerSelection !== computerChoice && computerChoice == 'Paper'){
+                result.textContent = 'Result : You Lose! Paper covers Rock';
+                para.textContent = `Opponent's Selection : ${computerChoice}`;
+                container.appendChild(para)
+                container.appendChild(result)
+                opponentCount++
+                opponent_score.textContent = opponentCount
+                opponent_score.textContent = `Opponent Score : ${opponentCount}`
+                opponent_score.classList.add('effects')
+
+                setTimeout(function(){
+                    opponent_score.classList.remove('effects')
+                }, 100)
+            }
+ } )
+
+ playerSelection_Paper.addEventListener('click', () => {  
+    playerSelection = 'Paper'
+
+    let computerChoice = getComputerChoice();
+    if(playerSelection == computerChoice){        
+        result.textContent = `${draw}`;
+        para.textContent = `Opponent's Selection : ${computerChoice}`;
+        container.appendChild(para)
+        container.appendChild(result); 
+        drawCount++
+        drawScore.textContent = drawCount
+        drawScore.textContent = `Draw Score : ${drawCount}` 
+        drawScore.classList.add('effects')
+
+        setTimeout(function(){
+            drawScore.classList.remove('effects')
+        }, 100)
             
-            computerSelection = getComputerChoice();
-            let result = playRound(playerSelection, computerSelection);
-            alert(result)
-           if (result === 'You Win!') {
-              playerScore += 1;                                                          
-           } else if (result === 'Draw') {
-              drawScore += 1;
-           } else {
-              computerScore++;
+    }   else if (playerSelection !== computerChoice && computerChoice == 'Scissors'){
+                result.textContent = 'Result : You Lose! Scissors cuts Paper';
+                para.textContent = `Opponent's Selection : ${computerChoice}`;
+                container.appendChild(para)
+                container.appendChild(result)
+                opponentCount++
+                opponent_score.textContent = opponentCount
+                opponent_score.textContent = `Opponent Score : ${opponentCount}`
+                opponent_score.classList.add('effects')
+
+                setTimeout(function(){
+                    opponent_score.classList.remove('effects')
+                }, 100)
+                               
+            } else if(playerSelection !== computerChoice && computerChoice == 'Rock'){
+                result.textContent = `${win}`;
+                para.textContent = `Opponent's Selection : ${computerChoice}`;
+                container.appendChild(para)
+                container.appendChild(result)
+                playerCount++
+                playerScore.textContent = playerCount
+                playerScore.textContent = `Player Score : ${playerCount}`;
+                playerScore.classList.add('effects')
+
+                setTimeout(function(){
+                    playerScore.classList.remove('effects')
+                }, 100)
            }
-        }                                                                                 
-     }  
+ } )
 
-     game();
+ playerSelection_Scissors.addEventListener('click', () => {  
+    playerSelection = 'Scissors'
 
-     alert(`PlayerScore: ${playerScore}\nComputerScore: ${computerScore}\nDraw: ${drawScore}`)
-     if(playerScore > computerScore){
-         alert(`Congratulations! You Win\n\nPlease Refresh Page To Have Another Go`)
-     }else if (computerScore > playerScore){
-         alert(`Better Luck Next Time\n\nPlease Refresh Page To Have Another Go`)
-     }else{
-         alert(`This Round Was A Tie\n\nPlease Refresh Page To Have Another Go`)
-     }
+    let computerChoice = getComputerChoice();
+    if(playerSelection == computerChoice){        
+        result.textContent = `${draw}`;
+        para.textContent = `Opponent's Selection : ${computerChoice}`;
+        container.appendChild(para)
+        container.appendChild(result);  
+        drawCount++
+        drawScore.textContent = drawCount
+        drawScore.textContent = `Draw Score : ${drawCount}` 
+        drawScore.classList.add('effects')
 
-} else {
-    alert('Please Input Rock, Paper or Scissors')
-}
+        setTimeout(function(){
+            drawScore.classList.remove('effects')
+        }, 100)
+        console.log('Draw')      
+    }   else if (playerSelection !== computerChoice && computerChoice == 'Rock'){
+                result.textContent = 'Result : You Lose! Rock crushes Scissors';
+                para.textContent = `Opponent's Selection : ${computerChoice}`;
+                container.appendChild(para)
+                container.appendChild(result)
+                opponentCount++
+                opponent_score.textContent = opponentCount
+                opponent_score.textContent = `Opponent Score : ${opponentCount}`
+                opponent_score.classList.add('effects')
 
+                setTimeout(function(){
+                    opponent_score.classList.remove('effects')
+                }, 100)
+               
+             
+            } else if(playerSelection !== computerChoice && computerChoice == 'Paper'){
+                result.textContent = `${win}`;
+                para.textContent = `Opponent's Selection : ${computerChoice}`;
+                container.appendChild(para)
+                container.appendChild(result)
+                playerCount++ 
+                playerScore.textContent = playerCount
+                playerScore.textContent = `Player Score : ${playerCount}`;
+                playerScore.classList.add('effects')
 
-
+                setTimeout(function(){
+                    playerScore.classList.remove('effects')
+                }, 100)
+             
+            }
+ } )
 
